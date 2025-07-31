@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GamerXise - Fitness for Gamers</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            background-color: #f0f0f0;
+            transition: background-color 0.3s ease;
+        }
+        :root {
+            --main-blue: #0078D7;
+            --main-green: #107C10;
+            --main-light: #FFFFFF;
+            --main-dark: #1C1C1C;
+            --main-glass: rgba(255, 255, 255, 0.5);
+        }
+        .glassmorphism {
+            background: var(--main-glass);
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .gradient-background {
+            background: linear-gradient(135deg, var(--main-blue), var(--main-green));
+        }
+        .text-shadow {
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            color: var(--main-light);
+            background: var(--main-blue);
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        .btn:active {
+            transform: translateY(0);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+        header {
+            background: var(--main-dark);
+            color: var(--main-light);
+            padding: 20px 0;
+        }
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        header nav ul {
+            list-style: none;
+            display: flex;
+        }
+        header nav ul li {
+            margin-left: 20px;
+        }
+        header nav ul li a {
+            color: var(--main-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        header nav ul li a:hover {
+            color: var(--main-blue);
+        }
+        .hero {
+            background: url('hero-background.jpg') no-repeat center center/cover;
+            height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--main-light);
+        }
+        .hero .container {
+            max-width: 800px;
+        }
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+        .services {
+            padding: 50px 0;
+            background: var(--main-light);
+        }
+        .services .service-item {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .services .service-item img {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 20px;
+        }
+        .services .service-item h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .services .service-item p {
+            font-size: 16px;
+        }
+        .testimonials {
+            padding: 50px 0;
+            background: var(--main-dark);
+            color: var(--main-light);
+        }
+        .testimonials .testimonial {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .testimonials .testimonial blockquote {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        .testimonials .testimonial cite {
+            font-size: 18px;
+            font-style: normal;
+        }
+        .pricing {
+            padding: 50px 0;
+            background: var(--main-light);
+        }
+        .pricing .plan {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .pricing .plan header {
+            background: var(--main-blue);
+            padding: 20px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        .pricing .plan header h2 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .pricing .plan .price {
+            font-size: 48px;
+            margin: 20px 0;
+        }
+        .pricing .plan .features {
+            list-style: none;
+            padding: 0;
+        }
+        .pricing .plan .features li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .pricing .plan footer {
+            background: var(--main-dark);
+            padding: 20px;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+        .about {
+            padding: 50px 0;
+            background: var(--main-dark);
+            color: var(--main-light);
+        }
+        .about .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .about .text {
+            max-width: 600px;
+        }
+        .about .text h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        .about .text p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .contact {
+            padding: 50px 0;
+            background: var(--main-light);
+            text-align: center;
+        }
+        .contact .btn {
+            margin-top: 20px;
+        }
+        .footer {
+            padding: 20px 0;
+            background: var(--main-dark);
+            color: var(--main-light);
+            text-align: center;
+        }
+        .footer a {
+            color: var(--main-blue);
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .blog-preview {
+            padding: 50px 0;
+            background: var(--main-light);
+        }
+        .blog-preview .blog-post {
+            margin-bottom: 30px;
+            border-radius: 10px;
+            overflow: hidden;
+            background: var(--main-glass);
+        }
+        .blog-preview .blog-post img {
+            width: 100%;
+            height: auto;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        .blog-preview .blog-post .content {
+            padding: 20px;
+        }
+        .blog-preview .blog-post .content h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .blog-preview .blog-post .content p {
+            font-size: 16px;
+        }
+        @media (max-width: 768px) {
+            header .container, .about .container {
+                flex-direction: column;
+            }
+            header nav ul {
+                flex-direction: column;
+            }
+            header nav ul li {
+                margin: 10px 0;
+            }
+            .about .text, .about img {
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">GamerXise</div>
+            <nav>
+                <ul>
+                    <li><a href="#value-proposition">Value Proposition</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#social-proof">Social Proof</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="hero gradient-background">
+        <div class="container">
+            <h1 class="text-shadow">Fitness for Gamers</h1>
+            <p class="text-shadow">Revolutionizing fitness by making it compatible with gaming.</p>
+            <a href="#contact" class="btn">Get Started</a>
+        </div>
+    </div>
+    <section id="value-proposition" class="services">
+        <div class="container">
+            <h2>Why Choose GamerXise?</h2>
+            <p>Our mission is to prove that you don't have to choose between your passion for gaming and your health.</p>
+            <div class="service-item">
+                <img src="icon1.png" alt="Icon 1">
+                <h3>Gamerxise Monthly</h3>
+                <p>A subscription that provides new workouts every month for $27/month.</p>
+            </div>
+            <div class="service-item">
+                <img src="icon2.png" alt="Icon 2">
+                <h3>Gamerxise Client</h3>
+                <p>Personal trainer to assess, guide, create and monitor your program, $100/month and $75 per session.</p>
+            </div>
+            <div class="service-item">
+                <img src="icon3.png" alt="Icon 3">
+                <h3>Gamerxise Programming</h3>
+                <p>Semi-personalized program designed by a personal trainer, $100 assessment/programming fee and then only $60 a month.</p>
+            </div>
+        </div>
+    </section>
+    <section id="social-proof" class="testimonials">
+        <div class="container">
+            <h2>What Our Users Say</h2>
+            <div class="testimonial">
+                <blockquote>"GamerXise has changed my life. I can now game and stay fit at the same time."</blockquote>
+                <cite>- John Doe, GamerXise User</cite>
+            </div>
+            <div class="testimonial">
+                <blockquote>"The workouts are easy to follow and I feel healthier every day."</blockquote>
+                <cite>- Jane Smith, GamerXise User</cite>
+            </div>
+        </div>
+    </section>
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <h2>Our Pricing Plans</h2>
+            <div class="plan glassmorphism">
+                <header>Gamerxise Monthly</header>
+                <div class="price">$27/month</div>
+                <ul class="features">
+                    <li>Guided workouts and resources</li>
+                    <li>Educational resources to teach you the basics</li>
+                    <li>Bonuses to improve results</li>
+                </ul>
+                <footer>
+                    <a href="#contact" class="btn">Sign Up</a>
+                </footer>
+            </div>
+            <div class="plan glassmorphism">
+                <header>Gamerxise Client</header>
+                <div class="price">$100/month + $75 per session</div>
+                <ul class="features">
+                    <li>Personal trainer assessment</li>
+                    <li>Tailored program creation</li>
+                    <li>Game skill goals integration</li>
+                </ul>
+                <footer>
+                    <a href="#contact" class="btn">Get Personalized Plan</a>
+                </footer>
+            </div>
+            <div class="plan glassmorphism">
+                <header>Gamerxise Programming</header>
+                <div class="price">$100 assessment/programming fee + $60/month</div>
+                <ul class="features">
+                    <li>Semi-personalized program</li>
+                    <li>Monthly updates and adjustments</li>
+                    <li>Unlimited program updates</li>
+                </ul>
+                <footer>
+                    <a href="#contact" class="btn">Start Programming</a>
+                </footer>
+            </div>
+        </div>
+    </section>
+    <section id="about" class="about">
+        <div class="container">
+            <div class="text">
+                <h2>About GamerXise</h2>
+                <p>Founded by gamers who understood the health challenges of long gaming sessions, GamerXise revolutionizes fitness by making it compatible with gaming. Our mission is to prove that you don't have to choose between your passion for gaming and your health.</p>
+                <a href="#contact" class="btn">Contact Us</a>
+            </div>
+            <img src="about-image.jpg" alt="About GamerXise">
+        </div>
+    </section>
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Get in Touch</h2>
+            <p>Ready to revolutionize your gaming and fitness? Contact us today!</p>
+            <a href="#contact" class="btn">Send a Message</a>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="container">
+            <a href="about.html">About Us</a>
+            <a href="services.html">Services</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="contact.html">Contact</a>
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="terms-of-use.html">Terms of Use</a>
+            <div class="social">
+                <a href="https://facebook.com">Facebook</a>
+                <a href="https://twitter.com">Twitter</a>
+                <a href="https://instagram.com">Instagram</a>
+            </div>
+        </div>
+    </footer>
+    <section class="blog-preview">
+        <div class="container">
+            <h2>Latest Blog Posts</h2>
+            <div class="blog-post">
+                <img src="blog1.jpg" alt="Blog Post 1">
+                <div class="content">
+                    <h3>Why gaming and exercise are better together</h3>
+                    <p>Discover how combining gaming and exercise can lead to a healthier lifestyle.</p>
+                </div>
+            </div>
+            <div class="blog-post">
+                <img src="blog2.jpg" alt="Blog Post 2">
+                <div class="content">
+                    <h3>Health benefits of gaming and exercise</h3>
+                    <p>Learn about the surprising health benefits of gaming and how to maximize them.</p>
+                </div>
+            </div>
+            <div class="blog-post">
+                <img src="blog3.jpg" alt="Blog Post 3">
+                <div class="content">
+                    <h3>Best fitness games of 2025 and why Gamerxise is better</h3>
+                    <p>Find out which fitness games are topping the charts and how Gamerxise outperforms them.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        // JavaScript for smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
